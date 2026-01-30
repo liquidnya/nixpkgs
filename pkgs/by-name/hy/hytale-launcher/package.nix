@@ -27,7 +27,7 @@
 }:
 
 let
-  version = "2026.01.27-b4eb731";
+  version = "2026.01.29-a86a538";
 
   # TODO: add icon once a stable versioned source is available
   desktopItem = makeDesktopItem {
@@ -43,11 +43,11 @@ let
   sources = {
     x86_64-linux = {
       url = "https://launcher.hytale.com/builds/release/linux/amd64/hytale-launcher-${version}.zip";
-      hash = "sha256-t/f0jwLcumBoHxCxst/OOg62oa6v9SqriGv70r22iSw=";
+      hash = "sha256-jsD3EjPPG9zlD7C/Sjklkl4QmigpbK2njqToyfXRYkA=";
     };
     aarch64-darwin = {
       url = "https://launcher.hytale.com/builds/release/darwin/arm64/hytale-launcher-${version}.zip";
-      hash = "sha256-OEwZ26cCf3+3zj7oOkw+d2h9ucgHT45wnsGObDdYTyM=";
+      hash = "sha256-8GhwWqw01nrXkz3jeKyAef80vN0tAXJik2kdq8kQq3A=";
     };
   };
 
