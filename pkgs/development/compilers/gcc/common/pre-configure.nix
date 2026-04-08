@@ -96,3 +96,8 @@ lib.optionalString (hostPlatform.isSunOS && hostPlatform.is64bit) ''
 + lib.optionalString (
   (!lib.systems.equals targetPlatform hostPlatform) && withoutTargetLibc && enableShared
 ) (import ./libgcc-buildstuff.nix { inherit lib stdenv; })
+
++ lib.optionalString langAda ''
+  export CC=gcc
+  export CC_FOR_BUILD=gcc
+''

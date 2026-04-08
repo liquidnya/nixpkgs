@@ -77,6 +77,11 @@ stdenv.mkDerivation (
             hash = "sha256-3YOnvuI6Qq7huQcqgFSz/o+ZgY2wNkKDqHIuzNz1MVY=";
             upstreamTriplet = "x86_64-apple-darwin21.6.0";
           };
+          aarch64-darwin = {
+            inherit url;
+            hash = "sha256-/nARwdQzAMd41fslUbrgloxn0hVZp9PokfQ9yPmL1g8=";
+            upstreamTriplet = "aarch64-apple-darwin23.6.0";
+          };
           x86_64-linux = {
             inherit url;
             hash = "sha256-pH3IuOpCM9sY/ppTYcxBmgpsUiMrisIjmAa/rmmZXb4=";
@@ -230,7 +235,7 @@ stdenv.mkDerivation (
         "x86_64-linux"
         "x86_64-darwin"
       ]
-      ++ lib.optionals (lib.versionAtLeast majorVersion "14") [ "aarch64-linux" ];
+      ++ lib.optionals (lib.versionAtLeast majorVersion "14") [ "aarch64-linux" "aarch64-darwin" ];
       sourceProvenance = with lib.sourceTypes; [ binaryNativeCode ];
     };
   }

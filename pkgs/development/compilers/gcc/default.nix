@@ -54,6 +54,7 @@
   majorMinorVersion,
   apple-sdk,
   darwin,
+  gccStdenv,
 }:
 
 let
@@ -203,7 +204,7 @@ assert threadsCross != { } -> stdenv.targetPlatform.isWindows;
 assert reproducibleBuild -> profiledCompiler == false;
 
 pipe
-  ((callFile ./common/builder.nix { }) (
+  ((callFile ./common/builder.nix ( if stdenv.isDarwin then { stdenv = gccStdenv; } else { })) (
     {
       pname = "${crossNameAddon}${name}";
       # retain snapshot date in package version, but not in final version
