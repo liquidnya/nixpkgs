@@ -1,0 +1,20 @@
+diff --git a/build.sh b/build.sh
+index 6b5bb7b..ab5d8ae 100755
+--- a/build.sh
++++ b/build.sh
+@@ -50,13 +50,10 @@ ninja -C "$pw_builddir"
+ echo "installing"
+ ninja -C "$pw_builddir" install
+ 
+-cat > "$builddir/native.txt" <<EOF
+-[built-in options]
+-pkg_config_path='$builddir/prefix/usr/lib/pkgconfig'
+-EOF
++# update PKG_CONFIG_PATH_FOR_BUILD to include pipewire-static instead of using native.txt
++export PKG_CONFIG_PATH_FOR_BUILD="$builddir/prefix/usr/lib/pkgconfig${PKG_CONFIG_PATH_FOR_BUILD:+:$PKG_CONFIG_PATH_FOR_BUILD}"
+ 
+ meson setup \
+-    --native-file "$builddir/native.txt" \
+     --cross-file "$base"/misc/x86_64-w64-mingw32.txt \
+     -Dlibpipewire_static_lib="$builddir/prefix/usr/lib/libpipewire-static-0.3.a" \
+     "$builddir" "$base" || { cat build/meson-logs/meson-log.txt; false; }
