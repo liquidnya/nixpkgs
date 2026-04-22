@@ -1,5 +1,5 @@
 diff --git a/misc/spout2pw.sh b/misc/spout2pw.sh
-index eec68bd..e183266 100755
+index eec68bd..1cf10c6 100755
 --- a/misc/spout2pw.sh
 +++ b/misc/spout2pw.sh
 @@ -450,25 +450,39 @@ main() {
@@ -26,13 +26,13 @@ index eec68bd..e183266 100755
 -        *)
 -            fatal "Unknown command: $verb. spout2pw only supports Steam/Proton and umu-run."
 -    esac
-+    if [ -n "$1" ]; then
++    if [ "$#" -lt 1 ]; then
 +        usage
 +        exit 1
 +    fi
 +
 +    while
-+        if [ -n "$1" ]; then
++        if [ "$#" -lt 1 ]; then
 +            # FIXME
 +            fatal "Unknown command: ${WRAPPERS[0]}. spout2pw only supports Steam/Proton and umu-run."
 +        fi
