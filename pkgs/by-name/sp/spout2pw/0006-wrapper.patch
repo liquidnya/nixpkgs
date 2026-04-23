@@ -1,0 +1,13 @@
+diff --git a/misc/spout2pw.sh b/misc/spout2pw.sh
+index eec68bd..fb4cf9c 100755
+--- a/misc/spout2pw.sh
++++ b/misc/spout2pw.sh
+@@ -479,7 +479,7 @@ main() {
+     setup_env
+ 
+     ret=0
+-    "$@" || ret="$?"
++    @WRAPPER@"$@" || ret="$?"
+     log "Command exit status: $ret"
+     exit $ret
+ }

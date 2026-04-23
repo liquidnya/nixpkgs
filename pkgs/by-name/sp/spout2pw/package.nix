@@ -13,6 +13,7 @@
   libdrm,
   vulkan-loader,
   pipewire,
+  withWrapper ? null,
 }:
 stdenv.mkDerivation (finalAttrs: {
   pname = "spout2pw";
@@ -73,6 +74,7 @@ stdenv.mkDerivation (finalAttrs: {
     substituteInPlace $out/share/spout2pw/spout2pw.sh \
       --replace-fail '@MESA_PATH@' "${mesa}" \
       --replace-fail '@SPOUT2PW_PATH@' "$out"
+      --replace-fail '@WRAPPER@' "${if withWrapper == null then "" else "${withWrapper} "}"
   '';
 
   meta = {
