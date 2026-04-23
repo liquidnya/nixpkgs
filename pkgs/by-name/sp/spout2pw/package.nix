@@ -52,7 +52,7 @@ stdenv.mkDerivation (finalAttrs: {
     ./0003-spout2pw-path.patch
     ./0004-spout2pw-usage.patch
     ./0005-tools-package.patch
-    ./0006-wrappers.patch
+    ./0006-wrapper.patch
   ];
 
   postPatch = ''
