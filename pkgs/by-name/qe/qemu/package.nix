@@ -350,7 +350,8 @@ stdenv.mkDerivation (finalAttrs: {
   ++ lib.optional (!pluginsSupport) "--disable-plugins"
   ++ lib.optional (!enableBlobs) "--disable-install-blobs"
   ++ lib.optional userOnly "--disable-system"
-  ++ lib.optional stdenv.hostPlatform.isStatic "--static";
+  ++ lib.optional stdenv.hostPlatform.isStatic "--static"
+  ++ [ "--enable-pie" ];
 
   dontWrapGApps = true;
 
